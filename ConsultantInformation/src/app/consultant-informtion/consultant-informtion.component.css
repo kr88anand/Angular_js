@@ -1,0 +1,13 @@
+.button-check a {
+	margin: 10px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+  }
+  
+  .input-container > * {
+    width: 95%;
+  }

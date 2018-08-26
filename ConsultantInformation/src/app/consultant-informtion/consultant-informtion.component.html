@@ -1,0 +1,142 @@
+<div>
+    <mat-card>
+    <mat-card-header>
+        <mat-card-title style="color: blue">New Consultant Form</mat-card-title>
+        </mat-card-header>
+<mat-card-content>
+<form [formGroup]="consultantForm">
+<table class="example-full-width" cellspacing="0">
+    <tr style="margin-left: 25px">
+    <td>
+  <mat-form-field>
+      <input matInput placeholder="First Name*" formControlName= "fname" value="">
+  </mat-form-field>
+  </td>
+  <td>
+  <mat-form-field style="margin-left: 40px">
+      <input matInput placeholder="Last Name*" formControlName= "lname" value="">
+  </mat-form-field>
+</td>
+</tr>
+
+<tr>
+    <td>
+  <mat-form-field>
+      <input matInput placeholder="Job*" formControlName= "job" value="">
+  </mat-form-field>
+</td>
+<td>
+  <mat-form-field style="margin-left: 40px">
+      <input matInput [matDatepicker]="picker" placeholder="Choose the date" formControlName= "dob">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</td>
+</tr>
+</table>
+
+<table class="example-full-width" cellspacing="0">
+<tr style="margin-left: 25px">
+<td>
+    <mat-form-field>
+        <input matInput placeholder="Current position*" formControlName= "position" value="">
+    </mat-form-field>
+</td></tr>
+<tr style="margin-left: 25px">
+        <td>
+    <mat-form-field>
+        <input matInput placeholder="Current Rate*" formControlName= "rate" value="">
+    </mat-form-field>
+</td></tr>
+    <tr style="margin-left: 25px">
+            <td>
+    <mat-form-field>
+        <input matInput placeholder="Education" formControlName= "education" value="">
+    </mat-form-field>
+</td></tr>
+    <tr style="margin-left: 25px">
+            <td>
+    <mat-form-field>
+        <input matInput placeholder="Address*" formControlName= "address" value="">
+    </mat-form-field>
+</td></tr>
+</table>
+
+<table class="example-full-width" cellspacing="0">
+<label style="color: blue">Contact Information</label>
+<tr style="margin-left: 25px">
+        <td>
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" formControlName="email" value="">
+  </mat-form-field>
+</td>
+</tr>
+<tr style="margin-left: 25px">
+        <td>
+  <mat-form-field>
+      <input matInput placeholder="Skype" formControlName="skype" value="">
+    </mat-form-field>
+</td>
+</tr>
+    <tr style="margin-left: 25px">
+            <td>
+    <mat-form-field>
+        <input matInput placeholder="phone" formControlName="phone" value="">
+      </mat-form-field>
+    </td>
+</tr>
+</table>
+
+<table class="example-full-width" cellspacing="0">
+<label style="color: blue">Work Permit</label>
+<tr style="margin-left: 25px">
+    <td>
+<mat-form-field>
+        <input matInput placeholder="Expiration date" formControlName="expiryDate" value="">
+      </mat-form-field>
+</td>
+</tr>
+</table>
+<table class="example-full-width" cellspacing="0">
+<label style="color: blue">Certifications</label>
+<tr style="margin-left: 25px">
+    <td>
+<mat-form-field>
+    <input matInput placeholder="certificates" formControlName="certificate" value="">
+  </mat-form-field>
+</td>
+</tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <label style="color: blue">Curriculam Vitee</label>
+        </td>
+        <td style="margin-left: 10px">
+            <input type="file" (change)="onfileChanged($event)">
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+<button mat-raised-button color="primary" (click)="SubmitForm();">Create</button>
+  <button mat-raised-button style="margin-left: 20px;" color="primary" *ngIf="isSuccessMessage"
+      matBadge="1" matBadgePosition="before" matBadgeColor="accent">
+    Customer inserted successfully.
+  </button>
+  <button mat-raised-button style="margin-left: 20px;" color="warn" *ngIf="isFailedMessage"
+  matBadge="1" matBadgePosition="before" matBadgeColor="accent">
+Customer insertion failed.
+</button>
+        </td>
+        <td>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+        </td>
+    </tr>
+</table>
+</form>
+</mat-card-content>
+</mat-card>
+</div>

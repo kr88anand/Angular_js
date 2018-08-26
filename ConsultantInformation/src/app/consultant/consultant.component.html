@@ -1,3 +1,17 @@
-<p>
-  consultant works!
-</p>
+<div class="button-row">
+<a mat-flat-button [routerLink]="['/addConsultant']" >Add Consulatant</a>
+</div>
+<br/>
+<div>
+<mat-grid-list cols="4" rowHeight="250px">
+    <mat-grid-tile *ngFor="let consultant of consultants">
+        <img class="tile-image" src ="../assets/pics/{{consultant.fname}}.jpg">
+        <mat-grid-tile-footer style="background: darkslategray">
+            <h3 mat-line>Name - {{consultant.fname}}</h3>
+            <span mat-line>Phone - {{consultant.phone}}</span> 
+            <h2 mat-line>Skype - {{consultant.skype}}</h2>
+            <a [routerLink]="['/edit']" class="btn btn-link" style="color: darkred">Edit</a>
+        </mat-grid-tile-footer>
+    </mat-grid-tile>
+</mat-grid-list>
+</div>
