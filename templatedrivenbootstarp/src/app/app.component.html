@@ -1,0 +1,90 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid col-xs-6" mb-5>
+  <h1>Registration Form</h1>
+  <form #userForm="ngForm">
+    <div>
+      <!-- {{ userForm.value | json }} -->
+      <!-- {{ userForm.form.valid }} -->
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" #name="ngModel" required appForbiddenName="bob" class="form-control" name="fname" ngModel>
+      </div>
+
+      <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+
+        <div *ngIf="name.errors.required">
+          Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>UserName</label>
+        <input type="text" required #uname="ngModel" [class.is-invalid]="uname.invalid && uname.touched" class="form-control" name="username"
+          ngModel>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label>Verify Password</label>
+        <input type="password" class="form-control" name="verifypassword" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" required #phone="ngModel" pattern="^\d{10}$" class="form-control" name="phone" ngModel>
+      </div>
+
+      <div *ngIf="phone.invalid && phone.touched" class="alert alert-danger">
+
+        <div *ngIf="phone.errors.required">
+          Phone Number is required.
+        </div>
+        <div *ngIf="phone.errors.pattern">
+          Phone Number should be 10 digit.
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <select class="form-control" ngModel name="topic">
+          <option value>I am interested in</option>
+          <option *ngFor="let topic of topics">{{topic}}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label>Time preference</label>
+        <div class="form-check">
+          <input class="form-check-input" ngModel type="radio" name="timePreference" value="morning">
+          <label class="form-check-label">Morning (9AM-12PM)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" ngModel type="radio" name="timePreference" value="evening">
+          <label class="form-check-label">Evening (5PM-8PM)</label>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputFile">Attach your Resume</label>
+        <input type="file" ngModel name="file" id="exampleInputFile">
+        <p class="help-block">Attach your updated CV</p>
+      </div>
+      <br>
+      <div class="form-check mb-3">
+        <input class="form-check-input" ngModel name="sendPromotion" type="checkbox">
+        <label class="form-check-label">Send me promotional offer</label>
+      </div>
+    </div>
+    <br>
+    <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit">Submit Form</button>
+
+  </form>
+
+</div>
