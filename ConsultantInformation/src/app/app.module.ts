@@ -8,8 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './/app-routing.module';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,
-   MatFormFieldModule, MatInputModule, MatCardModule, MatTableModule, MatDialogModule} from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule,
+   MatIconModule, MatListModule, MatFormFieldModule, MatInputModule, MatCardModule,
+   MatTableModule, MatDialogModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatSliderModule, DateAdapter} from '@angular/material';
